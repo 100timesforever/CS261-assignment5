@@ -629,6 +629,10 @@ void removeMinHeap(DynArr *heap, comparator compare)
 void _buildHeap(DynArr *heap, comparator compare)
 {
   /* FIXME: Write This */
+	int index = (heap->size)/2 -1; // calculate the index of the first "non leaf"
+	for(index; index <= 0; index--){
+		_adjustHeap(heap, heap->size, index, compare); //adjust the heap for each sub tree
+	}
 }
 /*
     In-place sort of the heap
