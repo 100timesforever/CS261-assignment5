@@ -654,7 +654,7 @@ void sortHeap(DynArr *heap, comparator compare)
 	_buildHeap(heap, compare);
 	
 	for(index = heap->size - 1; index >= 0; index--){
-		printf("in sortHeap, index: %d", index);
+//		printf("in sortHeap, index: %d", index);
 		swapDynArr(heap, 0, index);
 		_adjustHeap(heap, index, 0, compare);
 	}
