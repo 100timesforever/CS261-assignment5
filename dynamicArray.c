@@ -634,6 +634,7 @@ void _buildHeap(DynArr *heap, comparator compare)
 		_adjustHeap(heap, heap->size, index, compare); //adjust the heap for each sub tree
 	}
 }
+
 /*
     In-place sort of the heap
 
@@ -645,6 +646,14 @@ void _buildHeap(DynArr *heap, comparator compare)
 void sortHeap(DynArr *heap, comparator compare)
 {
   /* FIXME: Write this */
+	int index;
+
+	_buildHeap(heap, compare);
+	
+	for(index = heap->size; index >= 0; index--){
+		swapDynArr(heap, 0, index);
+		_adjustDynArr(heap, index, 0, compare);
+	}
 }
 
 
