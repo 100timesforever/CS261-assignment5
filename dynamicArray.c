@@ -464,7 +464,6 @@ int _binarySearch(struct DynArr *v, TYPE val, comparator compare)
         int mid;
 
         while(low < high)
-CS160_001_fall2014
         {
                 mid = low + (high-low)/2;
                 if((*compare)(v->data[mid], val) == -1)
@@ -531,6 +530,10 @@ int _smallerIndexHeap(DynArr *heap, int i, int j, comparator compare)
 			return(j);
 		}
 	}
+	else{
+		printf("Error in size of parameters i and j\nReturning 0\n");
+		return 0;
+	}
 }
 
 /*	Get the first node, which has the min priority, from the heap
@@ -593,7 +596,7 @@ void _adjustHeap(DynArr *heap, int max, int pos, comparator compare)
 	}
 
 	else if(leftChild < max){
-		if( _smallerIndexHeap(heap, leftChild, pos, compare) == index){
+		if( _smallerIndexHeap(heap, leftChild, pos, compare) == leftChild){
 			swapDynArr(heap, leftChild, pos);
 			_adjustHeap(heap, max, leftChild, compare);
 		}
@@ -629,8 +632,8 @@ void removeMinHeap(DynArr *heap, comparator compare)
 void _buildHeap(DynArr *heap, comparator compare)
 {
   /* FIXME: Write This */
-	int index = (heap->size)/2 -1; // calculate the index of the first "non leaf"
-	for(index; index <= 0; index--){
+	int index; 
+	for(index = (heap->size)/2 -1; index <= 0; index--){// calculate the index of the first "non leaf"
 		_adjustHeap(heap, heap->size, index, compare); //adjust the heap for each sub tree
 	}
 }
@@ -652,7 +655,7 @@ void sortHeap(DynArr *heap, comparator compare)
 	
 	for(index = heap->size; index >= 0; index--){
 		swapDynArr(heap, 0, index);
-		_adjustDynArr(heap, index, 0, compare);
+		_adjustHeap(heap, index, 0, compare);
 	}
 }
 

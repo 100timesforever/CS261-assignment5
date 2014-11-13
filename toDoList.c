@@ -29,8 +29,8 @@
 int compare(TYPE left, TYPE right)
 {
     /*FIXME: write this*/
-	struct Type * l = left;
-	struct Type * r = right;
+	struct Task * l = left;
+	struct Task * r = right;
 	if(l->priority < r->priority){
 		return -1;
 	}
@@ -72,7 +72,7 @@ void print_type(TYPE val)
 TaskP createTask (int priority, char *desc)
 {
   /*FIXME: Write this */
-  struct TaskP toReturn = malloc(sizeof(Task));
+  struct Task  *toReturn = malloc(sizeof(struct Task));
   strcpy(toReturn->description, desc);
   return toReturn;
   
