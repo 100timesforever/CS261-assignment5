@@ -18,7 +18,7 @@
  */
 
  /*Define this function, type casting the value of void * to the desired type.
-  The current definition of TYPE in bst.h is void*, which means that left and
+  The current definition of TYPE in type.h is void*, which means that left and
   right are void pointers. To compare left and right, you should first cast
   left and right to the corresponding pointer type (struct data *), and then
   compare the values pointed by the casted pointers.
@@ -29,9 +29,19 @@
 int compare(TYPE left, TYPE right)
 {
     /*FIXME: write this*/
-	struct data * l = left;
-	struct data * r = right;
-	if(l->
+	struct Type * l = left;
+	struct Type * r = right;
+	if(l->priority < r->priority){
+		return -1;
+	}
+	
+	else if(l->priority > r->priority){
+		return 1;
+	}
+	
+	else{
+		return 0;
+	}
 
 
 }
@@ -62,6 +72,10 @@ void print_type(TYPE val)
 TaskP createTask (int priority, char *desc)
 {
   /*FIXME: Write this */
+  struct TaskP toReturn = malloc(sizeof(Task));
+  strcpy(toReturn->description, desc);
+  return toReturn;
+  
 }
 
 /*  Save the list to a file

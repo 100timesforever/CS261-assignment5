@@ -464,6 +464,7 @@ int _binarySearch(struct DynArr *v, TYPE val, comparator compare)
         int mid;
 
         while(low < high)
+CS160_001_fall2014
         {
                 mid = low + (high-low)/2;
                 if((*compare)(v->data[mid], val) == -1)
