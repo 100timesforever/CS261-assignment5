@@ -579,7 +579,28 @@ void addHeap(DynArr *heap, TYPE val, comparator  compare)
 
 void _adjustHeap(DynArr *heap, int max, int pos, comparator compare)
 {
-  /* FIXME: Write this */
+	/* FIXME: Write this */
+	int leftChild = 2 * pos + 1;
+	int rightChild = 2 * pos + 2;
+	int index;
+  
+	if (rightChild < max){
+		index = _smallerIndexHeap(heap, leftChild, rightChild, compare);
+		if( _smallerIndexHeap(heap, index, pos, compare) == index){
+			swapDynArr(heap, index, pos);
+			_adjustHeap(heap, max, index, compare);
+		}
+	}
+
+	else if(leftChild < max){
+		if( _smallerIndexHeap(heap, leftChild, pos, compare) == index){
+			swapDynArr(heap, leftChild, pos);
+			_adjustHeap(heap, max, leftChild, compare);
+		}
+	}
+	else{
+		return;
+	}
 }
 
 /*	Remove the first node, which has the min priority, from the heap
