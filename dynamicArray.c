@@ -589,14 +589,28 @@ void _adjustHeap(DynArr *heap, int max, int pos, comparator compare)
   
 	if (rightChild < max){
 		index = _smallerIndexHeap(heap, leftChild, rightChild, compare);
+
+		printf("\n***2 Children***\n");
+		printf("pos: 		%d\n", pos);
+		printf("leftChild: 	%d\n", leftChild);
+		printf("rightChild: %d\n", rightChild);
+		printf("index: 		%d\n", index);
+
 		if( _smallerIndexHeap(heap, index, pos, compare) == index){
+			printf("Child at index is smaller than pos\n");
 			swapDynArr(heap, index, pos);
 			_adjustHeap(heap, max, index, compare);
 		}
 	}
 
 	else if(leftChild < max){
+	
+		printf("***1 Children***\n");
+		printf("pos: 		%d\n", pos);
+		printf("leftChild: 	%d\n", leftChild);
+
 		if( _smallerIndexHeap(heap, leftChild, pos, compare) == leftChild){
+			printf("Left Child is smaller than pos\n");
 			swapDynArr(heap, leftChild, pos);
 			_adjustHeap(heap, max, leftChild, compare);
 		}

@@ -74,6 +74,7 @@ TaskP createTask (int priority, char *desc)
   /*FIXME: Write this */
   struct Task  *toReturn = malloc(sizeof(struct Task));
   strcpy(toReturn->description, desc);
+  toReturn->priority = priority;
   return toReturn;
   
 }

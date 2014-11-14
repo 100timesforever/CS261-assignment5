@@ -42,6 +42,7 @@ int main(int argc, const char * argv[])
 	addHeap(mainList, task4, compare);
 	addHeap(mainList, task5, compare);
 	addHeap(mainList, task6, compare);
+	printDynArr(mainList, print_type);
 	addHeap(mainList, task7, compare);
 	addHeap(mainList, task8, compare);
 	addHeap(mainList, task9, compare);
