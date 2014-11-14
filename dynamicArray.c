@@ -561,19 +561,27 @@ TYPE getMinHeap(DynArr *heap)
 void addHeap(DynArr *heap, TYPE val, comparator  compare)
 {
   /* FIXME: Write This */
-	int i;
+	int index;
+	int parent;
 	if(heap != NULL) {
 		if(heap->size == heap->capacity) {
 			_dynArrSetCapacity(heap, 2 * heap->capacity);
 		}
 		heap->data[heap->size] = val;
-		//adjust the tree for each element, up to but not including the root
-		for(i = heap->size; i > 0; i = ((i-1) / 2) ){
-			_adjustHeap(heap, heap->size, i, compare);
-		}
-		//adjust from the root
-		_adjustHeap(heap, heap->size, 0, compare);
 		heap->size++;
+		index = sizeDynArr(heap) - 1;
+
+		while(index != 0){
+			parent = (index-1)/2;
+			printf("index: %d || parent: %d || size: %d\n", index, parent, heap->size);
+			if( _smallerIndexHeap(heap, index, parent, compare) == index){
+				swapDynArr(heap, parent, index);
+				index = parent; //update index
+			}
+			else{
+				return;
+			}
+		}	
 	}
 }
 
