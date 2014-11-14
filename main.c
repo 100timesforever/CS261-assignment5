@@ -7,6 +7,8 @@
 
 int main (int argc, const char * argv[])
 {
+  int debuggingDyn = 1; //If 1, will use the dynamic Array functions,
+  						//to debug the list stuff. Else, use heap funcitons.
   char cmd = ' ';
   char  filename[128]; 
   FILE *filepointer;
@@ -59,7 +61,14 @@ int main (int argc, const char * argv[])
 		  scanf("%d", &taskpri);
 //		  printf("Adding task...\n");
 		  mytask = createTask(taskpri, taskname);
-		  addHeap(mainList, mytask, compare);
+
+		  //Using the dynamic array to test
+		  if (debuggingDyn == 1){
+		      addDynArrOrd(mainList, mytask, compare);
+		  }
+		  else{
+		  	  addHeap(mainList, mytask, compare);
+		  }
 	  }
 
 	  else if(cmd == 'g'){
@@ -67,15 +76,31 @@ int main (int argc, const char * argv[])
 		//	  printf("Your list is empty! Hooray!\n");
 		 // }
 		  //else{
-			  mytask = getMinHeap(mainList);
+			  if(debuggingDyn == 1){
+				  mytask = getDynArr(mainList, 0);
+			  }
+			  else{
+			      mytask = getMinHeap(mainList);
+			  }
 			  printf("Your first task is: %s\n", mytask->description);
 		 // }
 	  }
 
 	  else if(cmd == 'r'){
-		  mytask = getMinHeap(mainList);
+          if(debuggingDyn == 1){
+			  mytask = getDynArr(mainList, 0);
+		  }
+		  else{
+		      mytask = getMinHeap(mainList);
+		  }
 		  printf("Your first task (%s) has been compleated! (or removed...)\n", mytask->description);
-		  removeMinHeap(mainList, compare);
+
+		  if(debuggingDyn == 1){
+			  removeAtDynArr(mainList, 0);
+		  }
+		  else{
+			  removeMinHeap(mainList, compare);
+		  }
 	  }
 
 	  else if(cmd == 'p'){
