@@ -77,7 +77,7 @@ int main(int argc, const char * argv[])
 	//We will add values at random to the list sortedList
 	//and will be sorting in one go, rather than by slowly creating a heap
 	//as elements are added
-/*	addDynArr(sortedList, task4);
+	addDynArr(sortedList, task4);
 	addDynArr(sortedList, task6);
 	addDynArr(sortedList, task5);
 	addDynArr(sortedList, task8);
@@ -88,15 +88,15 @@ int main(int argc, const char * argv[])
 	addDynArr(sortedList, task2);
 	addDynArr(sortedList, task9);
 	printf("Before Sort Called \n");
-*/
-  //  printDynArr(sortedList, print_type);
-	/* sort tasks */
-//	sortHeap(sortedList, compare);
 
-//	printf("After Sort Called \n");
+    printDynArr(sortedList, print_type);
+	/* sort tasks */
+	sortHeap(sortedList, compare);
+
+	printf("After Sort Called \n");
 
 	/* print sorted tasks from the dynamic array */
- //   printDynArr(sortedList, print_type);
+    printDynArr(sortedList, print_type);
 
 	return 0;
 }

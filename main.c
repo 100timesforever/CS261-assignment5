@@ -7,9 +7,9 @@
 
 int main (int argc, const char * argv[])
 {
-  int debuggingDyn = 1; //If 1, will use the dynamic Array functions,
+  int debuggingDyn = 0; //If 1, will use the dynamic Array functions,
   						//to debug the list stuff. Else, use heap funcitons.
-  char cmd = ' ';
+  char cmd[3] = " ";
   char  filename[128]; 
   FILE *filepointer;
 
@@ -33,12 +33,12 @@ int main (int argc, const char * argv[])
              "'e' to exit the program\n"
              );
       /* get input command (from the keyboard) */
-      cmd = getchar();
+	scanf("%s", cmd);
       /* clear the trailing newline character */
-      while (getchar() != '\n');
+      //while (getchar() != '\n');
 
       /* Fixme:  Your logic goes here! */
-	  if(cmd == 'l'){
+	  if(cmd[0] == 'l'){
 		  printf("Please type a file name:");
 		  scanf("%s", filename);
 		  printf("Loading file...\n");
@@ -46,7 +46,7 @@ int main (int argc, const char * argv[])
 		  loadList(mainList, filepointer);
 	  }
 
-	  else if(cmd == 's'){
+	  else if(cmd[0] == 's'){
 		  printf("Please type a file name:");
 		  scanf("%s", filename);
 		  filepointer = fopen(filename, "w");
@@ -54,7 +54,7 @@ int main (int argc, const char * argv[])
 		  saveList(mainList, filepointer);
 	  }
 
-	  else if(cmd == 'a'){
+	  else if(cmd[0] == 'a'){
 		  printf("Give the task a name: ");
 		  scanf("%s", taskname);
 		  printf("And now the priority: ");
@@ -71,7 +71,7 @@ int main (int argc, const char * argv[])
 		  }
 	  }
 
-	  else if(cmd == 'g'){
+	  else if(cmd[0] == 'g'){
 		  //if(mainList->size == 0){
 		//	  printf("Your list is empty! Hooray!\n");
 		 // }
@@ -86,7 +86,7 @@ int main (int argc, const char * argv[])
 		 // }
 	  }
 
-	  else if(cmd == 'r'){
+	  else if(cmd[0] == 'r'){
           if(debuggingDyn == 1){
 			  mytask = getDynArr(mainList, 0);
 		  }
@@ -103,7 +103,7 @@ int main (int argc, const char * argv[])
 		  }
 	  }
 
-	  else if(cmd == 'p'){
+	  else if(cmd[0] == 'p'){
 		  printDynArr(mainList, print_type);
 	  }
 	  
@@ -111,7 +111,7 @@ int main (int argc, const char * argv[])
       /* Note: We have provided functions called printList(), saveList() and loadList() for you
          to use.  They can be found in toDoList.c */
     }
-  while(cmd != 'e');
+  while(cmd[0] != 'e');
   /* delete the list */
   deleteDynArr(mainList);
 

@@ -603,13 +603,13 @@ void _adjustHeap(DynArr *heap, int max, int pos, comparator compare)
   
 	if (rightChild < max){
 		index = _smallerIndexHeap(heap, leftChild, rightChild, compare);
-
+/*
 		printf("\n***2 Children***\n");
 		printf("pos: 		%d\n", pos);
 		printf("leftChild: 	%d\n", leftChild);
 		printf("rightChild: %d\n", rightChild);
 		printf("index: 		%d\n", index);
-
+*/
 		if( _smallerIndexHeap(heap, index, pos, compare) == index){
 			printf("Child at index is smaller than pos\n");
 			swapDynArr(heap, index, pos);
@@ -618,11 +618,11 @@ void _adjustHeap(DynArr *heap, int max, int pos, comparator compare)
 	}
 
 	else if(leftChild < max){
-	
-		printf("\n***1 Children***\n");
+/*	
+		printf("\n***1 Child***\n");
 		printf("pos: 		%d\n", pos);
 		printf("leftChild: 	%d\n", leftChild);
-
+*/
 		if( _smallerIndexHeap(heap, leftChild, pos, compare) == leftChild){
 			printf("Left Child is smaller than pos\n");
 			swapDynArr(heap, leftChild, pos);
@@ -661,7 +661,7 @@ void _buildHeap(DynArr *heap, comparator compare)
 {
   /* FIXME: Write This */
 	int index; 
-	for(index = (heap->size)/2 -1; index <= 0; index--){// calculate the index of the first "non leaf"
+	for(index = (heap->size)/2 -1; index >= 0; index--){// calculate the index of the first "non leaf"
 		_adjustHeap(heap, heap->size, index, compare); //adjust the heap for each sub tree
 	}
 }
